@@ -1,0 +1,241 @@
+\documentclass{article}
+
+\usepackage{fancyhdr}
+\usepackage{extramarks}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{amsfonts}
+\usepackage{tikz}
+\usepackage{float}
+
+\usetikzlibrary{automata,positioning}
+
+%
+% Basic Document Settings
+%
+
+\topmargin=-0.45in
+\evensidemargin=0in
+\oddsidemargin=0in
+\textwidth=6.5in
+\textheight=9.0in
+\headsep=0.25in
+
+\linespread{1.1}
+
+\pagestyle{fancy}
+\lhead{\hmwkAuthorName}
+\chead{\hmwkClass\ (\hmwkClassInstructor): \hmwkTitle}
+\rhead{\firstxmark}
+\lfoot{\lastxmark}
+\cfoot{\thepage}
+
+\renewcommand\headrulewidth{0.4pt}
+\renewcommand\footrulewidth{0.4pt}
+
+\setlength\parindent{0pt}
+
+%
+% Create Problem Sections
+%
+
+\newcommand{\enterProblemHeader}[1]{
+    \nobreak\extramarks{}{Problem \arabic{#1} continued on next page\ldots}\nobreak{}
+    \nobreak\extramarks{Problem \arabic{#1} (continued)}{Problem \arabic{#1} continued on next page\ldots}\nobreak{}
+    }
+    \newcommand{\exitProblemHeader}[1]{
+    \nobreak\extramarks{Problem \arabic{#1} (continued)}{Problem \arabic{#1} continued on next page\ldots}\nobreak{}
+    \stepcounter{#1}
+    \nobreak\extramarks{Problem \arabic{#1}}{}\nobreak{}
+}
+
+\setcounter{secnumdepth}{0}
+\newcounter{partCounter}
+\newcounter{homeworkProblemCounter}
+\setcounter{homeworkProblemCounter}{1}
+\nobreak\extramarks{Problem \arabic{homeworkProblemCounter}}{}\nobreak{}
+
+%
+% Homework Problem Environment
+%
+% This environment takes an optional argument. When given, it will adjust the
+% problem counter. This is useful for when the problems given for your
+% assignment aren't sequential. See the last 3 problems of this template for an
+% example.
+%
+\newenvironment{homeworkProblem}[1][-1]{
+    \ifnum#1>0
+        \setcounter{homeworkProblemCounter}{#1}
+    \fi
+    \section{Problem \arabic{homeworkProblemCounter}}
+    \setcounter{partCounter}{1}
+    \enterProblemHeader{homeworkProblemCounter}
+}{
+    \exitProblemHeader{homeworkProblemCounter}
+}
+
+%
+% BEGIN MODIFCATIONS HERE
+%
+% Homework Details
+%   - Title
+%   - Due date
+%   - Class
+%   - Section/Time
+%   - Instructor
+%   - Author
+%
+\newcommand{\hmwkTitle}{Lab 9}
+\newcommand{\hmwkDueDate}{Oct. 20th}
+\newcommand{\hmwkClass}{AER E 361}
+\newcommand{\hmwkClassInstructor}{Professor Nelson}
+\newcommand{\hmwkAuthorName}{\textbf{Kyle Schoenbauer}}
+%
+% END MODIFCATIONS HERE
+%
+
+%
+% Title Page
+%
+
+\title{
+    \vspace{2in}
+    \textmd{\textbf{\hmwkClass:\ \hmwkTitle}}\\
+    \normalsize\vspace{0.1in}\small{Due\ on\ \hmwkDueDate\ at 3:10pm}\\
+    \vspace{0.1in}\large{\textit{\hmwkClassInstructor}}
+    \vspace{3in}
+}
+
+
+\author{\hmwkAuthorName}
+\date{}
+
+\renewcommand{\part}[1]{\textbf{\large Part \Alph{partCounter}}\stepcounter{partCounter}\\}
+
+
+ % Various Helper Commands
+%
+
+% Useful for algorithms
+\newcommand{\alg}[1]{\textsc{\bfseries \footnotesize #1}}
+
+% For derivatives
+\newcommand{\deriv}[1]{\frac{\mathrm{d}}{\mathrm{d}x} (#1)}
+
+% For partial derivatives
+\newcommand{\pderiv}[2]{\frac{\partial}{\partial #1} (#2)}
+
+% Integral dx
+\newcommand{\dx}{\mathrm{d}x}
+
+% Alias for the Solution section header
+\newcommand{\solution}{\textbf{\large Solution}}
+
+% Probability commands: Expectation, Variance, Covariance, Bias
+\newcommand{\E}{\mathrm{E}}
+\newcommand{\Var}{\mathrm{Var}}
+\newcommand{\Cov}{\mathrm{Cov}}
+\newcommand{\Bias}{\mathrm{Bias}}
+
+\begin{document}
+
+\maketitle
+
+\pagebreak
+
+\begin{homeworkProblem}
+
+
+
+%Please add the following required packages to your document preamble:
+% \usepackage{multirow}
+\begin{table}[]
+\caption{Signed and Unsigned Values}
+\label{my-label}
+\begin{tabular}{lllll}
+\multirow{2}{*}{Size} & \multicolumn{2}{c}{Unsigned} & \multicolumn{2}{c}{Signed} \\
+& Min. Value & Max. Value & Min. Value & Max. Value \\
+8-bit &0 &255 &-128 &127 \\
+16-bit &0 &65535 &-32768 &32767 \\
+32-bit &0 &4294967295 &-2147483648 &2147483647 \\
+64-bit &0 &18446744073709551616 &-9223372036854775808 &9223372036854775807
+\end{tabular}
+\end{table}
+See table above.
+\end{homeworkProblem}
+
+\begin{homeworkProblem}
+8-bit unsigned representation
+
+88 = 01011000
+
+0 = 00000000
+
+1 = 00000001
+
+127 = 01111111
+
+255 = 11111111
+\end{homeworkProblem}
+\begin{homeworkProblem}
+8-bit 2's complement signed representation
+
++88 = 01011000
+
+-44 = 11010100
+
+-1 = 11111111
+
+0 = 00000000
+
++1 = 00000001
+
+-128 = 10000000
+
++127 = 01111111
+\end{homeworkProblem}
+
+\begin{homeworkProblem}
+Largest positive number represented in 32-bit normalized form: (2-2^-^2^3)*2^1^2^7
+
+Smallest positive number represented in 32-bit normalized form: 2^-^1^4^9
+\end{homeworkProblem}
+
+\begin{homeworkProblem}
+Largest negative number represented in 32-bit normalized form: -2^-^1^4^9
+
+Smallest negative number represented in 32-bit normalized form: -(2-2^-^2^3)*2^1^2^7
+\end{homeworkProblem}
+\begin{homeworkProblem}
+Largest positive number represented in 32-bit de-normalized form: (1-2^-^2^3)*2^-^1^2^6
+
+Smallest positive number represented in 32-bit de-normalized form: 2^-^1^4^9
+\end{homeworkProblem}
+\begin{homeworkProblem}
+Largest negative number represented in 32-bit de-normalized form: -2^-^1^4^9
+
+Smallest negative number represented in 32-bit de-normalized form: -(1-2^-^2^3)*2^-^1^2^6
+\end{homeworkProblem}
+\begin{homeworkProblem}
+Largest positive number represented in 64-bit normalized form: 2^1^0^2^3*(1+(1-2^-^5^2))
+
+Smallest positive number represented in 64-bit normalized form: 2^-^1^0^2^2
+\end{homeworkProblem}
+\begin{homeworkProblem}
+Largest negative number represented in 64-bit normalized form: -2^-^1^0^2^2
+
+Smallest negative number represented in 64-bit normalized form: -2^1^0^2^3*(1+(1-2^-^5^2))
+\end{homeworkProblem}
+\begin{homeworkProblem}
+Largest positive number represented in 64-bit de-normalized form: 2^-^1^0^2^2*(1-2^-^5^2)
+
+Smallest positive number represented in 64-bit de-normalized form: 2^-^1^0^7^4
+\end{homeworkProblem}
+\begin{homeworkProblem}
+Largest negative number represented in 64-bit de-normalized form: -2^-^1^0^7^4
+
+Smallest negative number represented in 64-bit de-normalized form: -2^-^1^0^2^2*(1-2^-^5^2)
+\end{homeworkProblem}
+\end{document}   
+
+
